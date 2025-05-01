@@ -240,7 +240,7 @@ def init_project():
     if not os.path.exists(utils_h):
         with open(utils_h, 'w') as f:
             f.write(
-                '#ifndef __TOOLS_UTILS_H\n#define __TOOLS_UTILS_H\n#endif\n\nvoid say_hello();\n')
+                '#ifndef __TOOLS_UTILS_H\n#define __TOOLS_UTILS_H\n\nvoid say_hello();\n#endif\n')
         log("Created tools/utils.h")
 
     if not os.path.exists(utils_cpp):
@@ -314,10 +314,10 @@ def add_util(util_name):
             f'#ifndef __TOOLS_{util_name.upper()}_H\n#define __TOOLS_{util_name.upper()}_H\n#endif\n\n// Function declarations for {util_name}\nvoid {util_name}_init();\n')
     log(f"Created {h_file}")
 
-    with open(cpp_file, 'w') as f:
+    with open(h_file, 'w') as f:
         f.write(
-            f'#include "{util_name}.h"\n#include <iostream>\n\nvoid {util_name}_init() {{\n    std::cout << "Initialized {util_name}" << std::endl;\n}}\n')
-    log(f"Created {cpp_file}")
+            f'#ifndef __TOOLS_{util_name.upper()}_H\n#define __TOOLS_{util_name.upper()}_H\n\n// Function declarations for {util_name}\nvoid {util_name}_init();\n#endif\n')
+    log(f"Created {h_file}")
 
     with open(utils_h_file, 'a') as f:
         f.write(f'\n#include "{util_name}.h"\n')
