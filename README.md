@@ -67,7 +67,7 @@ python build.py compile t_001 --mode debug --gdb
 ### 4. 增加测试用例 📝
 
 ```bash
-python build.py compile t_001 --record
+python build.py test t_001 --record
 ```
 
 ### 5. 运行测试并对比结果 🧪
