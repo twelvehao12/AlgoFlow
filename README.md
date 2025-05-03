@@ -102,12 +102,11 @@ python build.py util logger --remove
 ### `new <name>`
 创建新题目的源文件（`src/<name>.cpp`）和测试用例目录（`test_cases/<name>/`）。
 
-### `compile <name> [--mode debug/release] [--run] [--gdb] [--record]`
+### `compile <name> [--mode debug/release] [--run] [--gdb]`
 编译指定题目，支持：
 - `--mode`：选择 `debug`（默认）或 `release` 模式
 - `--run`：编译后运行程序
 - `--gdb`：启动 GDB 调试器
-- `--record`：运行程序并记录输入输出为测试样例
 
 ### `run <name>`
 运行程序。
@@ -115,8 +114,9 @@ python build.py util logger --remove
 ### `gdb <name>`
 在 GDB 调试器中调试程序。
 
-### `test <name>`
+### `test <name> [--record]`
 自动运行所有保存的测试用例，对比输出结果并标红差异 ⚠️。
+- `--record`：运行程序并记录输入输出为测试样例
 
 ### `delete <name>`
 删除题目源文件和测试用例目录。
